@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class RaycastTower : MonoBehaviour
 {
@@ -7,11 +8,17 @@ public class RaycastTower : MonoBehaviour
     public float attacksPerSecond = 1f;
     public LayerMask detectionLayers;
 
+    public ParticleSystem shootEffect;   // PREFAB or child template
+    public float particleSpeed = 10f;
+
     private float attackTimer;
 
     void Awake()
     {
         detectionLayers = LayerMask.GetMask("Enemy");
+
+        if (shootEffect == null)
+            shootEffect = GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
@@ -37,10 +44,46 @@ public class RaycastTower : MonoBehaviour
             return;
 
         EnemyHealth enemy = hits[0].GetComponent<EnemyHealth>();
-        if (enemy != null)
+        if (enemy == null)
+            return;
+
+        enemy.TakeDamage(damage);
+
+        ShootParticle(enemy.transform);
+    }
+
+    void ShootParticle(Transform target)
+    {
+        // Create a new particle instance
+        ParticleSystem ps = Instantiate(
+            shootEffect,
+            shootEffect.transform.position,
+            Quaternion.identity
+        );
+
+        ps.gameObject.SetActive(true);
+        ps.transform.LookAt(target);
+        ps.Play();
+
+        StartCoroutine(MoveParticle(ps.transform, target.position));
+    }
+
+    IEnumerator MoveParticle(Transform particle, Vector3 targetPos)
+    {
+        while (particle != null &&
+               Vector3.Distance(particle.position, targetPos) > 0.1f)
         {
-            enemy.TakeDamage(damage);
+            particle.position = Vector3.MoveTowards(
+                particle.position,
+                targetPos,
+                particleSpeed * Time.deltaTime
+            );
+
+            yield return null;
         }
+
+        if (particle != null)
+            Destroy(particle.gameObject);
     }
 
     void OnDrawGizmos()
