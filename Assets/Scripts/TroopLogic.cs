@@ -18,8 +18,13 @@ public class TroopLogic : MonoBehaviour {
             agent = GetComponent<NavMeshAgent>();
             agent.speed = troopData.movementSpeed;
             agent.stoppingDistance = troopData.attackRange - 0.2f;
-        }catch(Exception e) {
-            Debug.Log("Error with MavMeshAgent : "+e.Message);
+        } catch (Exception e) {
+            Debug.Log("Error with MavMeshAgent : " + e.Message);
+        }
+        try {
+            em = FindAnyObjectByType<EntitiesManager>();
+        } catch (Exception e) {
+            Debug.Log("Error with EntitiesManager : " + e.Message);
         }
     }
 
@@ -31,25 +36,32 @@ public class TroopLogic : MonoBehaviour {
         } else {
             Move(target.transform.position);
         }
-        
+
+        if(target != null) DrawTargetLine();
     }
     void Move(Vector3 pos) {
         agent.isStopped = false;
         agent.SetDestination(target.position);
     }
     Transform CheckForClosestEnemy() {
-        if(em.enemies.Count == 0) {
+
+        if (em.enemies.Count == 0) {
             return null;
         } else {
             GameObject closestEnemy = em.enemies[0];
-            float minDistance = Vector3.Distance(transform.position,em.enemies[0].transform.position);
-            foreach(GameObject entity in em.enemies) {
-                float distance = Vector3.Distance(transform.position,entity.transform.position);
-               if(distance < minDistance) {
+            float minDistance = Vector3.Distance(transform.position, em.enemies[0].transform.position);
+            foreach (GameObject entity in em.enemies) {
+                float distance = Vector3.Distance(transform.position, entity.transform.position);
+                if (distance < minDistance) {
                     minDistance = distance;
-                } 
+                    closestEnemy = entity;
+                }
             }
             return closestEnemy.transform;
         }
+    }
+
+    public void DrawTargetLine() {
+        Debug.DrawLine(transform.position,target.transform.position);
     }
 }
