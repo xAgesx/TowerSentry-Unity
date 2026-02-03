@@ -205,7 +205,7 @@ MonoBehaviour:
       - m_Target: {fileID: 997350320}
         m_TargetAssemblyTypeName: TroopSpawn, Assembly-CSharp
         m_MethodName: PreviewUnit
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -988,6 +988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: c932b65da9ea39949925929ca76250c2, type: 2}
+  em: {fileID: 0}
 --- !u!65 &938797377
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1307,6 +1308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: fd988f6a27f64b847a65acf4f8f2fcb9, type: 2}
+  em: {fileID: 0}
 --- !u!65 &1497699124
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1390,7 +1392,7 @@ Transform:
   m_GameObject: {fileID: 1497699122}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.780182, y: 2.7469952, z: -0.4457817}
+  m_LocalPosition: {x: -9.780182, y: 2.7469952, z: 12.164218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1431,29 +1433,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: fd988f6a27f64b847a65acf4f8f2fcb9, type: 2}
---- !u!1 &1608741351 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6143229186062860156, guid: 1d5c35b465ab7724b95f12a204bb7d8c, type: 3}
-  m_PrefabInstance: {fileID: 6066611473418027871}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1608741352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608741351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e6d628cefe965247b15e9a5888fe329, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  troopData: {fileID: 11400000, guid: aa4805e3ade2b0c459f0e493b349a4bc, type: 2}
-  agent: {fileID: 0}
-  target: {fileID: 0}
-  nextAttackTime: 1
-  HP: 0
-  em: {fileID: 997350318}
 --- !u!1 &1632611348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,7 +1642,7 @@ Transform:
   m_GameObject: {fileID: 1868379890}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.780182, y: 2.7469952, z: -5.230264}
+  m_LocalPosition: {x: -9.780182, y: 2.7469952, z: -0.33578157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1682,6 +1661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: c932b65da9ea39949925929ca76250c2, type: 2}
+  em: {fileID: 0}
 --- !u!195 &1868379896
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1752,6 +1732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: fd988f6a27f64b847a65acf4f8f2fcb9, type: 2}
+  em: {fileID: 0}
 --- !u!65 &1900301667
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1835,7 +1816,7 @@ Transform:
   m_GameObject: {fileID: 1900301665}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.780182, y: 2.7469952, z: -2.6957817}
+  m_LocalPosition: {x: -18.71, y: 2.7469952, z: -2.6957817}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2060,7 +2041,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2132242224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 997350320}
+        m_TargetAssemblyTypeName: TroopSpawn, Assembly-CSharp
+        m_MethodName: PreviewUnit
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2132242224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2112,17 +2105,37 @@ PrefabInstance:
       value: EntitiesManager
       objectReference: {fileID: 0}
     - target: {fileID: 2702374978746598948, guid: 6b6d73e30547e514dba037e8a37cd8cf, type: 3}
+      propertyPath: enemies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2702374978746598948, guid: 6b6d73e30547e514dba037e8a37cd8cf, type: 3}
       propertyPath: 'enemies.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1868379890}
+    - target: {fileID: 2702374978746598948, guid: 6b6d73e30547e514dba037e8a37cd8cf, type: 3}
+      propertyPath: 'enemies.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1497699122}
+    - target: {fileID: 2702374978746598948, guid: 6b6d73e30547e514dba037e8a37cd8cf, type: 3}
+      propertyPath: 'enemies.Array.data[2]'
       value: 
       objectReference: {fileID: 1900301665}
     - target: {fileID: 2702374978746598948, guid: 6b6d73e30547e514dba037e8a37cd8cf, type: 3}
+      propertyPath: 'enemies.Array.data[3]'
+      value: 
+      objectReference: {fileID: 938797375}
+    - target: {fileID: 2702374978746598948, guid: 6b6d73e30547e514dba037e8a37cd8cf, type: 3}
       propertyPath: troopPrefabs.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2702374978746598948, guid: 6b6d73e30547e514dba037e8a37cd8cf, type: 3}
       propertyPath: 'troopPrefabs.Array.data[0]'
       value: 
       objectReference: {fileID: 6143229186062860156, guid: 1d5c35b465ab7724b95f12a204bb7d8c, type: 3}
+    - target: {fileID: 2702374978746598948, guid: 6b6d73e30547e514dba037e8a37cd8cf, type: 3}
+      propertyPath: 'troopPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7660789662876766418, guid: bf3d48d0e82e2724594fd6f364b94d06, type: 3}
     - target: {fileID: 4638109962277385323, guid: 6b6d73e30547e514dba037e8a37cd8cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.7056375
@@ -2176,9 +2189,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5912538889409294958, guid: 1d5c35b465ab7724b95f12a204bb7d8c, type: 3}
+      propertyPath: em
+      value: 
+      objectReference: {fileID: 997350318}
     - target: {fileID: 5945585755429239114, guid: 1d5c35b465ab7724b95f12a204bb7d8c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -11.5
       objectReference: {fileID: 0}
     - target: {fileID: 5945585755429239114, guid: 1d5c35b465ab7724b95f12a204bb7d8c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2186,7 +2203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5945585755429239114, guid: 1d5c35b465ab7724b95f12a204bb7d8c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.5
+      value: 15.5
       objectReference: {fileID: 0}
     - target: {fileID: 5945585755429239114, guid: 1d5c35b465ab7724b95f12a204bb7d8c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2223,10 +2240,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6143229186062860156, guid: 1d5c35b465ab7724b95f12a204bb7d8c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1608741352}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d5c35b465ab7724b95f12a204bb7d8c, type: 3}
 --- !u!1001 &6565900334105159103
 PrefabInstance:
