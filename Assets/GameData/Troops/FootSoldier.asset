@@ -18,4 +18,4 @@ MonoBehaviour:
   attackRate: 1
   attackRange: 2
   prefab: {fileID: 6143229186062860156, guid: 1d5c35b465ab7724b95f12a204bb7d8c, type: 3}
-  cost: 0
+  cost: 50
