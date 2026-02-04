@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77294e4682c96fd409a5901ded35aa24, type: 3}
+  m_Name: Level_1
+  m_EditorClassIdentifier: 
+  levelNumber: 1
+  enemyGroups:
+  - enemyPrefab: {fileID: 4580954531043875452, guid: 37959441175c203459fac768a03c02a0, type: 3}
+    count: 3
+    delayBetweenSpawns: 2
+    delayBeforeStarting: 1
+  goldReward: 10
