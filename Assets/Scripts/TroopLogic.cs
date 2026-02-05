@@ -61,6 +61,18 @@ public class TroopLogic : MonoBehaviour {
         }
     }
 
+    public void TakeDamage(float damage) {
+
+        HP -= damage;
+        Debug.Log("Unit HP: " + HP);
+
+        if (HP <= 0f)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
     public void DrawTargetLine() {
         Debug.DrawLine(transform.position,target.transform.position);
     }

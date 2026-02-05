@@ -4,11 +4,18 @@ using UnityEngine.AI;
 public class EnemyLogic: MonoBehaviour
 {
     [Header("Stats")]
+    [Header("Stats")]
     [SerializeField] private EnemyStats stats;
+
+    [Header("Targeting")]
+    public float aggroRange = 6f;
+    public LayerMask unitLayer;
 
     private NavMeshAgent agent;
     private Transform tower;
     private RaycastTower towerHealth;
+
+    private Transform currentTarget;
     private float attackTimer;
 
     void Awake()
@@ -35,31 +42,100 @@ public class EnemyLogic: MonoBehaviour
 
     void Update()
     {
-        if (tower == null)
-            return;
+        SelectTarget();
+        MoveAndAttack();
+    }
 
-        float distance = Vector3.Distance(transform.position, tower.position);
+    // ---------------- TARGET SELECTION ----------------
 
-        if (distance <= stats.attackRange)
+    void SelectTarget()
+    {
+        Collider[] unitsInRange = Physics.OverlapSphere(
+            transform.position,
+            aggroRange,
+            unitLayer
+        );
+
+        if (unitsInRange.Length > 0)
         {
-            agent.isStopped = true;
-            AttackTower();
+            currentTarget = GetClosestTarget(unitsInRange);
         }
         else
         {
-            agent.isStopped = false;
-            agent.SetDestination(tower.position);
+            currentTarget = tower;
         }
     }
 
-    void AttackTower()
+    Transform GetClosestTarget(Collider[] targets)
+    {
+        Transform closest = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (Collider col in targets)
+        {
+            float dist = Vector3.Distance(transform.position, col.transform.position);
+            if (dist < minDistance)
+            {
+                minDistance = dist;
+                closest = col.transform;
+            }
+        }
+
+        return closest;
+    }
+
+    // ---------------- MOVEMENT + ATTACK ----------------
+
+    void MoveAndAttack()
+    {
+        if (currentTarget == null)
+            return;
+
+        float distance = Vector3.Distance(transform.position, currentTarget.position);
+
+        if (distance > stats.attackRange)
+        {
+            agent.isStopped = false;
+            agent.SetDestination(currentTarget.position);
+        }
+        else
+        {
+            agent.isStopped = true;
+            AttackCurrentTarget();
+        }
+    }
+
+    void AttackCurrentTarget()
     {
         attackTimer -= Time.deltaTime;
 
-        if (attackTimer <= 0f)
+        if (attackTimer > 0f)
+            return;
+
+        // Attack UNIT
+        if (currentTarget.CompareTag("Unit"))
+        {
+            TroopLogic unitHealth = currentTarget.GetComponent<TroopLogic>();
+            if (unitHealth != null)
+                unitHealth.TakeDamage(stats.damage);
+        }
+        // Attack TOWER
+        else if (currentTarget.CompareTag("Tower"))
         {
             towerHealth.TakeDamage(stats.damage);
-            attackTimer = 1f / stats.damagePerSecond;
         }
+
+        attackTimer = 1f / stats.damagePerSecond;
+    }
+
+    // ---------------- DEBUG ----------------
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, aggroRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, stats.attackRange);
     }
 }
