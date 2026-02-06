@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SelectionManager : MonoBehaviour {
-    private HoverHealthDisplay currentHover;
+    private HoverDisplay currentHover;
     private Camera mainCam;
 
     void Start() {
@@ -18,16 +18,25 @@ public class SelectionManager : MonoBehaviour {
         Ray ray = mainCam.ScreenPointToRay(mousePos);
 
         if (Physics.Raycast(ray, out RaycastHit hit)) {
-            HoverHealthDisplay unit = hit.collider.GetComponent<HoverHealthDisplay>();
+            HoverDisplay unit = hit.collider.GetComponent<HoverDisplay>();
 
             if (unit != currentHover) {
-                if (currentHover != null) currentHover.SetOverlayVisible(false);
+                if (currentHover != null) {
+                    currentHover.SetOverlayVisible(false);
+                    currentHover.SetStatsVisible(false);
+                }
                 currentHover = unit;
-                if (currentHover != null) currentHover.SetOverlayVisible(true);
+                if (currentHover != null) {
+                    currentHover.SetOverlayVisible(true);
+                    currentHover.SetStatsVisible(true);
+
+                }
             }
         } else {
             if (currentHover != null) {
                 currentHover.SetOverlayVisible(false);
+                currentHover.SetStatsVisible(false);
+
                 currentHover = null;
             }
         }

@@ -1,5 +1,6 @@
-using System.Reflection;
+
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Entity", menuName = "Scriptable Objects/Entity")]
 public class Entity : ScriptableObject
@@ -13,4 +14,5 @@ public class Entity : ScriptableObject
     public float attackRange;
     public GameObject prefab;
     public int cost;
+    public Sprite img;
 }
