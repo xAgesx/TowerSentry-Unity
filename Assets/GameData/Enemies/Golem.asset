@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dfce4d117de5224884e3d594a27a835, type: 3}
-  m_Name: FootSoldier
+  m_Name: Golem
   m_EditorClassIdentifier: 
   type: 
   maxHP: 100
-  movementSpeed: 1
-  damage: 20
-  attackRate: 1
+  movementSpeed: 2
+  damage: 10
+  attackRate: 0.5
   attackRange: 2
-  prefab: {fileID: 6143229186062860156, guid: 1d5c35b465ab7724b95f12a204bb7d8c, type: 3}
-  cost: 50
-  img: {fileID: 21300000, guid: 59c7decc9476b854d85484e734455933, type: 3}
+  prefab: {fileID: 4580954531043875452, guid: 37959441175c203459fac768a03c02a0, type: 3}
+  cost: 0
+  img: {fileID: 21300000, guid: 01f2d38d9739c8c4e9d2c3d9f9136c88, type: 3}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
+    public static GameManager instance;
     public List<LevelData> allLevels;
     private int currentLevelIndex = 0;
 
@@ -14,10 +15,17 @@ public class GameManager : MonoBehaviour {
     public GameObject upgradeUI;
 
     public EntitiesManager em;
+    public GameObject statsUI;
 
+    void Awake() {
+        instance = this;
+    }
     void Start() {
         StartLevel(currentLevelIndex);
+        
         em = FindAnyObjectByType<EntitiesManager>().GetComponent<EntitiesManager>();
+        statsUI = GameObject.Find("EntityStats");
+        statsUI.SetActive(false);
     }
 
     void StartLevel(int index) {

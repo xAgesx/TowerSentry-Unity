@@ -2,22 +2,21 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TroopLogic : MonoBehaviour {
+public class TroopLogic : EntityLogic {
     [Header("Troop Properties")]
-    public Entity troopData;
     public NavMeshAgent agent;
     public Transform target;
     public float nextAttackTime;
-    public float HP;
     [Header("References")]
     public EntitiesManager em;
+    
     void Start() {
-        HP = troopData.maxHP;
+        HP = stats.maxHP;
         target = null;
         try {
             agent = GetComponent<NavMeshAgent>();
-            agent.speed = troopData.movementSpeed;
-            agent.stoppingDistance = troopData.attackRange - 0.2f;
+            agent.speed = stats.movementSpeed;
+            agent.stoppingDistance = stats.attackRange - 0.2f;
         } catch (Exception e) {
             Debug.Log("Error with MavMeshAgent : " + e.Message);
         }
