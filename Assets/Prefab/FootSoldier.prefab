@@ -416,8 +416,8 @@ GameObject:
   - component: {fileID: 8709590707815426530}
   - component: {fileID: 6226355469407594277}
   - component: {fileID: 215717768877303086}
-  - component: {fileID: 5912538889409294958}
   - component: {fileID: 4143057689698017938}
+  - component: {fileID: 6611636297963966380}
   m_Layer: 7
   m_Name: FootSoldier
   m_TagString: Unit
@@ -539,24 +539,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5912538889409294958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6143229186062860156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e6d628cefe965247b15e9a5888fe329, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  troopData: {fileID: 11400000, guid: aa4805e3ade2b0c459f0e493b349a4bc, type: 2}
-  agent: {fileID: 215717768877303086}
-  target: {fileID: 0}
-  nextAttackTime: 1
-  HP: 0
-  em: {fileID: 2702374978746598948, guid: 6b6d73e30547e514dba037e8a37cd8cf, type: 3}
 --- !u!114 &4143057689698017938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,4 +554,21 @@ MonoBehaviour:
   healthCanvas: {fileID: 5782689215520512634}
   statsWindow: {fileID: 0}
   hpText: {fileID: 44627265356771132}
-  gm: {fileID: 8394844196355114749, guid: efc619afc4adb56419cb0778d58bc767, type: 3}
+--- !u!114 &6611636297963966380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6143229186062860156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6d628cefe965247b15e9a5888fe329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: aa4805e3ade2b0c459f0e493b349a4bc, type: 2}
+  HP: 80
+  agent: {fileID: 0}
+  target: {fileID: 0}
+  nextAttackTime: 0
+  em: {fileID: 0}

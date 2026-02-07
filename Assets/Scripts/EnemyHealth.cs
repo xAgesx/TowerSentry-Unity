@@ -3,18 +3,18 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour {
     [SerializeField] private Entity stats;
 
-    private float currentHP;
+    private float HP;
     public EntitiesManager em;
     void Awake() {
-        currentHP = stats.maxHP;
+        HP = stats.maxHP;
         em = FindAnyObjectByType<EntitiesManager>();
     }
 
     public void TakeDamage(float damage) {
-        currentHP -= damage;
-        Debug.Log(gameObject.name + " HP: " + currentHP);
+        HP -= damage;
+        Debug.Log(gameObject.name + " HP: " + HP);
 
-        if (currentHP <= 0f) {
+        if (HP <= 0f) {
             Die();
         }
     }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfce4d117de5224884e3d594a27a835, type: 3}
   m_Name: FootSoldier
   m_EditorClassIdentifier: 
+  type: 
   maxHP: 100
   movementSpeed: 1
   damage: 20
@@ -19,3 +20,4 @@ MonoBehaviour:
   attackRange: 2
   prefab: {fileID: 6143229186062860156, guid: 1d5c35b465ab7724b95f12a204bb7d8c, type: 3}
   cost: 50
+  img: {fileID: 21300000, guid: 59c7decc9476b854d85484e734455933, type: 3}

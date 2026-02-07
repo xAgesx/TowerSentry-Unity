@@ -127,9 +127,9 @@ GameObject:
   - component: {fileID: 6514926145914248708}
   - component: {fileID: 4260314632870060960}
   - component: {fileID: 3798375953660173794}
-  - component: {fileID: 7456192146667363180}
   - component: {fileID: 3984093291513528187}
   - component: {fileID: 6541273508282078358}
+  - component: {fileID: -4815176565721411014}
   m_Layer: 3
   m_Name: testEnemy
   m_TagString: Untagged
@@ -227,20 +227,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7456192146667363180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4580954531043875452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb35dc4830bfb7442b89eeef3bb39394, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: afc255ecb563ef3449e708e15823b5ef, type: 2}
-  em: {fileID: 0}
 --- !u!195 &3984093291513528187
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -276,10 +262,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: afc255ecb563ef3449e708e15823b5ef, type: 2}
+  HP: 0
   aggroRange: 6
   unitLayer:
     serializedVersion: 2
     m_Bits: 128
+  em: {fileID: 0}
+--- !u!114 &-4815176565721411014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4580954531043875452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd7a7e54e4b67746a898e8e6d1ad67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthCanvas: {fileID: 2846089191749340817}
+  statsWindow: {fileID: 0}
+  hpText: {fileID: 2433026204815015092}
 --- !u!1 &4665650572938440516
 GameObject:
   m_ObjectHideFlags: 0
