@@ -7,6 +7,7 @@ TagManager:
   - Tower
   - Unit
   - StatsUI
+  - Enemy
   layers:
   - Default
   - TransparentFX
