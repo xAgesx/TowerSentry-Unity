@@ -2,20 +2,23 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 
 public class HoverDisplay : MonoBehaviour {
     [Header("UI Components")]
     public GameObject healthCanvas;
     public GameObject statsWindow;
-    public List<GameObject> statsUI;
+    private GameObject statsUI;
     public TextMeshProUGUI hpText;
 
     private TroopLogic healthScript;
+    
 
     void Awake() {
         healthScript = GetComponent<TroopLogic>();
-        
+        statsWindow = GameManager.instance.statsUI;
+        statsUI = statsWindow.transform.Find("Stats").gameObject;
     }
 
     public void SetOverlayVisible(bool visible) {
@@ -34,12 +37,12 @@ public class HoverDisplay : MonoBehaviour {
         if(healthScript.troopData.img != null) entityIMG.sprite = healthScript.troopData.img;
 
         
-        statsUI[0].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.troopData.maxHP.ToString();
-        statsUI[1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.troopData.damage.ToString();
-        statsUI[2].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.troopData.movementSpeed.ToString();
-        statsUI[3].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.troopData.attackRate.ToString();
-        statsUI[4].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.troopData.attackRange.ToString();
-        statsUI[5].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.troopData.maxHP.ToString();
+        statsUI.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.troopData.maxHP.ToString();
+        statsUI.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.troopData.damage.ToString();
+        statsUI.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.troopData.movementSpeed.ToString();
+        statsUI.transform.GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.troopData.attackRate.ToString();
+        statsUI.transform.GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.troopData.attackRange.ToString();
+        statsUI.transform.GetChild(5).GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.troopData.maxHP.ToString();
         
 
     }

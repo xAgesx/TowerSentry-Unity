@@ -5,7 +5,7 @@ public class EnemyLogic: MonoBehaviour
 {
     [Header("Stats")]
     [Header("Stats")]
-    [SerializeField] private EnemyStats stats;
+    [SerializeField] private Entity stats;
 
     [Header("Targeting")]
     public float aggroRange = 6f;
@@ -125,7 +125,7 @@ public class EnemyLogic: MonoBehaviour
             towerHealth.TakeDamage(stats.damage);
         }
 
-        attackTimer = 1f / stats.damagePerSecond;
+        attackTimer = 1f / stats.attackRate;
     }
 
     // ---------------- DEBUG ----------------

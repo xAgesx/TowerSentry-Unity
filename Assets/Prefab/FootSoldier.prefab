@@ -571,11 +571,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthCanvas: {fileID: 5782689215520512634}
   statsWindow: {fileID: 0}
-  statsUI:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   hpText: {fileID: 44627265356771132}
+  gm: {fileID: 8394844196355114749, guid: efc619afc4adb56419cb0778d58bc767, type: 3}

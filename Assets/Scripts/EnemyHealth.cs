@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour {
-    [SerializeField] private EnemyStats stats;
+    [SerializeField] private Entity stats;
 
     private float currentHP;
     public EntitiesManager em;
