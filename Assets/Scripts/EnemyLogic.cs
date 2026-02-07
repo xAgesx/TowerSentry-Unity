@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyLogic : EntityLogic {
-    [Header("Stats")]
-    [Header("Stats")]
     [Header("Targeting")]
     public float aggroRange = 6f;
     public LayerMask unitLayer;
@@ -119,6 +117,9 @@ public class EnemyLogic : EntityLogic {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, stats.attackRange);
     }
+
+    // -------------- Health Management -----------------
+
     public void TakeDamage(float damage) {
         HP -= damage;
         Debug.Log(gameObject.name + " HP: " + HP);

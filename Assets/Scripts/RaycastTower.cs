@@ -55,7 +55,7 @@ public class RaycastTower : MonoBehaviour
         if (hits.Length == 0)
             return;
 
-        EnemyHealth enemy = hits[0].GetComponent<EnemyHealth>();
+        EnemyLogic enemy = hits[0].GetComponent<EnemyLogic>();
         if (enemy == null)
             return;
 

@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,7 +10,8 @@ public class TroopLogic : EntityLogic {
     public float nextAttackTime;
     [Header("References")]
     public EntitiesManager em;
-    
+    private float attackTimer;
+
     void Start() {
         HP = stats.maxHP;
         target = null;
@@ -29,18 +31,36 @@ public class TroopLogic : EntityLogic {
 
     void Update() {
         target = CheckForClosestEnemy();
-        if (target == null) {
+
+        if (target == null)
+        {
             agent.isStopped = true;
             Debug.Log("Idle");
-        } else {
+        }
+        else {
             Move(target.transform.position);
         }
+            
 
-        if(target != null) DrawTargetLine();
+        if(target != null)DrawTargetLine();
     }
     void Move(Vector3 pos) {
-        agent.isStopped = false;
-        agent.SetDestination(target.position);
+
+        
+        
+        float distance = Vector3.Distance(transform.position, target.position);
+
+        if (distance > stats.attackRange)
+        {
+            agent.isStopped = false;
+            agent.SetDestination(target.position);
+        }
+        else
+        {
+            agent.isStopped = true;
+            AttackCurrentTarget();
+        }
+        
     }
     Transform CheckForClosestEnemy() {
 
@@ -59,6 +79,34 @@ public class TroopLogic : EntityLogic {
             return closestEnemy.transform;
         }
     }
+
+
+    void AttackCurrentTarget()
+    {
+        attackTimer -= Time.deltaTime;
+
+        if (attackTimer > 0f)
+            return;
+
+        if (target == null)
+            return;
+
+        // Attack enemy
+        if (target.CompareTag("Enemy"))
+        {
+            EnemyLogic enemy = target.GetComponent<EnemyLogic>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(stats.damage);
+                Debug.Log("Unit is hitting");
+            }
+                
+
+        }
+
+        attackTimer = 1f / stats.attackRate;
+    }
+
 
     public void TakeDamage(float damage) {
 
