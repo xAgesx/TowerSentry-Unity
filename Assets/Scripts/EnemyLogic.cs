@@ -14,10 +14,13 @@ public class EnemyLogic : EntityLogic {
     private float attackTimer;
     public EntitiesManager em;
 
+    public Animator animator;
+
     void Awake() {
         HP = stats.maxHP;
         em = FindAnyObjectByType<EntitiesManager>();
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     void Start() {
@@ -84,10 +87,12 @@ public class EnemyLogic : EntityLogic {
             agent.SetDestination(currentTarget.position);
         } else {
             agent.isStopped = true;
+            animator.SetTrigger("Attack");
             AttackCurrentTarget();
         }
     }
 
+    
     void AttackCurrentTarget() {
         attackTimer -= Time.deltaTime;
 
@@ -133,6 +138,7 @@ public class EnemyLogic : EntityLogic {
         Debug.Log(gameObject.name + " died");
         FindAnyObjectByType<GameManager>().EnemyDied();
         em.enemies.Remove(gameObject);
-        Destroy(gameObject);
+        animator.SetBool("Dead",true);
+        Destroy(gameObject,2f);
     }
 }
