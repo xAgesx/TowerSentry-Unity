@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 4580954531043875452}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.780182, y: 2.7469952, z: -0.33578157}
+  m_LocalPosition: {x: -5.490182, y: 5.046995, z: -3.6715634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -268,6 +268,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   em: {fileID: 0}
+  animator: {fileID: 0}
+  isDead: 0
 --- !u!114 &-4815176565721411014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +502,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ??
+  m_text: 100%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
