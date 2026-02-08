@@ -18,6 +18,6 @@ MonoBehaviour:
   damage: 10
   attackRate: 0.5
   attackRange: 2
-  prefab: {fileID: 4580954531043875452, guid: 37959441175c203459fac768a03c02a0, type: 3}
+  prefab: {fileID: 3894686801780384096, guid: 0fedb01d68968c44f9d8a681e156a496, type: 3}
   cost: 0
   img: {fileID: 21300000, guid: 01f2d38d9739c8c4e9d2c3d9f9136c88, type: 3}

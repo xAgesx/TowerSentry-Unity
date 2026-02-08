@@ -15,6 +15,7 @@ public class EnemyLogic : EntityLogic {
     public EntitiesManager em;
 
     public Animator animator;
+    public bool isDead = false;
 
     void Awake() {
         HP = stats.maxHP;
@@ -129,7 +130,7 @@ public class EnemyLogic : EntityLogic {
         HP -= damage;
         Debug.Log(gameObject.name + " HP: " + HP);
 
-        if (HP <= 0f) {
+        if (HP <= 0f && !isDead) {
             Die();
         }
     }
@@ -138,7 +139,9 @@ public class EnemyLogic : EntityLogic {
         Debug.Log(gameObject.name + " died");
         FindAnyObjectByType<GameManager>().EnemyDied();
         em.enemies.Remove(gameObject);
-        animator.SetBool("Dead",true);
+        isDead= true;
+        animator.SetBool("Dead", true);
         Destroy(gameObject,2f);
+
     }
 }
