@@ -20,7 +20,7 @@ public class RaycastTower : MonoBehaviour
 
     [Header("Health point")]
     public float maxHP = 200f;
-    private float currentHP;
+    public float currentHP;
 
     void Awake()
     {
