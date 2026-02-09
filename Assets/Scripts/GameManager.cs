@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 
     private int totalEnemiesToSpawn;
     private int enemiesSpawnedSoFar;
-    private int enemiesKilledSoFar;
+    public int enemiesKilledSoFar;
 
     public Transform spawnPoint;
     public GameObject upgradeUI;
@@ -64,11 +64,12 @@ public class GameManager : MonoBehaviour {
     public void EnemyDied() {
         enemiesKilledSoFar++;
         if (enemiesKilledSoFar >= totalEnemiesToSpawn) {
-            EndLevel();
+            StartCoroutine(EndLevel());
         }
     }
 
-    void EndLevel() {
+    IEnumerator EndLevel() {
+        yield return new WaitForSeconds(2);
         Time.timeScale = 0f;
         upgradeUI.SetActive(true);
     }

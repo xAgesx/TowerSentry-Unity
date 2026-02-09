@@ -15,13 +15,14 @@ public class EnemyLogic : EntityLogic {
     public EntitiesManager em;
 
     public Animator animator;
-    public bool isDead = false;
-
+    public GameManager gameManager;
+    private bool isDead = false;
     void Awake() {
         HP = stats.maxHP;
         em = FindAnyObjectByType<EntitiesManager>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     void Start() {
@@ -127,20 +128,21 @@ public class EnemyLogic : EntityLogic {
     // -------------- Health Management -----------------
 
     public void TakeDamage(float damage) {
+        if (isDead) return;
         HP -= damage;
         Debug.Log(gameObject.name + " HP: " + HP);
 
-        if (HP <= 0f && !isDead) {
+        if (HP <= 0f) {
             Die();
         }
     }
 
     void Die() {
         Debug.Log(gameObject.name + " died");
-        FindAnyObjectByType<GameManager>().EnemyDied();
-        em.enemies.Remove(gameObject);
-        isDead= true;
+        isDead = true;
         animator.SetBool("Dead", true);
+        gameManager.EnemyDied();
+        em.enemies.Remove(gameObject);
         Destroy(gameObject,2f);
 
     }
