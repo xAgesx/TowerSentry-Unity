@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96689ecd3b82bdb4e8b70040bbdeab3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewMaterial: {fileID: 2100000, guid: a7cf30b323a7b534aaea6764080a5f02, type: 2}
+  previewMaterial: {fileID: 2100000, guid: 0b1852d4726c8504991bb7001a89de0d, type: 2}
   errorPreviewMaterial: {fileID: 2100000, guid: b2817483d3e05ac4db59024b4ba6cfbb, type: 2}
   previewPrefab: {fileID: 7790509346254119}
   range: 15

@@ -21,6 +21,7 @@ public class RaycastTower : MonoBehaviour
     [Header("Health point")]
     public float maxHP = 200f;
     public float currentHP;
+    public Vector3 offset;
 
     void Awake()
     {
@@ -76,7 +77,7 @@ public class RaycastTower : MonoBehaviour
     {
         laser.enabled = true;
 
-        laser.SetPosition(0, transform.position);
+        laser.SetPosition(0, transform.position + offset);
         laser.SetPosition(1, target.position);
 
         yield return new WaitForSeconds(laserDuration);
