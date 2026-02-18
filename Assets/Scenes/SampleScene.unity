@@ -1514,7 +1514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be76e84fe2b1a643977e17f433af44b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 20
   dragSpeed: 2
   zoomSpeed: 0.1
   minHeight: 2
@@ -5295,6 +5295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe457eebd858af49aae89d0a6d9241f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isVisible: 0
 --- !u!224 &3279587878268695087
 RectTransform:
   m_ObjectHideFlags: 0

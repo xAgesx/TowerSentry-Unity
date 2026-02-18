@@ -12,37 +12,42 @@ public class HoverDisplay : MonoBehaviour {
     public TextMeshProUGUI hpText;
 
     private EntityLogic healthScript;
-    
+    private Outline outline;
+
 
     void Awake() {
         healthScript = GetComponent<EntityLogic>();
         statsWindow = GameManager.instance.statsUI;
         statsUI = statsWindow.transform.Find("Stats").gameObject;
+        outline = GetComponent<Outline>();
+        SetOutline(false);
     }
-
+    public void SetOutline(bool state) {
+        if (outline != null) outline.enabled = state;
+    }
     public void SetOverlayVisible(bool visible) {
-        if (healthCanvas.activeSelf == visible) return; 
+        if (healthCanvas.activeSelf == visible) return;
 
         healthCanvas.SetActive(visible);
         if (visible) UpdateUI();
     }
     public void SetStatsVisible(bool visible) {
-        if(statsWindow.activeSelf == visible) return;
-        
+        if (statsWindow.activeSelf == visible) return;
+
         statsWindow.SetActive(visible);
 
-        
-        var entityIMG = statsWindow.transform.GetChild(0).GetComponent<Image>();
-        if(healthScript.stats.img != null) entityIMG.sprite = healthScript.stats.img;
 
-        
+        var entityIMG = statsWindow.transform.GetChild(0).GetComponent<Image>();
+        if (healthScript.stats.img != null) entityIMG.sprite = healthScript.stats.img;
+
+
         statsUI.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.stats.maxHP.ToString();
         statsUI.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.stats.damage.ToString();
         statsUI.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.stats.movementSpeed.ToString();
         statsUI.transform.GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.stats.attackRate.ToString();
         statsUI.transform.GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.stats.attackRange.ToString();
         statsUI.transform.GetChild(5).GetChild(1).GetComponent<TextMeshProUGUI>().text = healthScript.stats.maxHP.ToString();
-        
+
 
     }
     void UpdateUI() {
