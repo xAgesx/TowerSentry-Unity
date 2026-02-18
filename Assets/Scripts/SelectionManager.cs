@@ -37,25 +37,25 @@ public class SelectionManager : MonoBehaviour {
             }
         }
 
-        
+
         if (Mouse.current.leftButton.wasPressedThisFrame) {
-            // If clicked a unit, select it
             if (unitUnderMouse != null) {
-                // Deselect old unit UI if it's not the one currently the player is hovering
+                // Deselect old unit
                 if (selectedUnit != null && selectedUnit != unitUnderMouse) {
-                    selectedUnit.SetOverlayVisible(false);
+                    selectedUnit.SetOutline(false);
                     selectedUnit.SetStatsVisible(false);
                 }
+
+                // Select new unit
                 selectedUnit = unitUnderMouse;
-                Debug.Log("Unit Selected: " + selectedUnit.name);
-            }
-            // If clicked empty space, deselect everything
-            else {
+                selectedUnit.SetOutline(true); 
+                selectedUnit.SetStatsVisible(true);
+            } else {
+                // Clicked empty ground: hide everything
                 if (selectedUnit != null) {
-                    selectedUnit.SetOverlayVisible(false);
+                    selectedUnit.SetOutline(false);
                     selectedUnit.SetStatsVisible(false);
                     selectedUnit = null;
-                    Debug.Log("Deselected everything");
                 }
             }
         }

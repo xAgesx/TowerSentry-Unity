@@ -969,6 +969,7 @@ GameObject:
   - component: {fileID: 8184166518327964027}
   - component: {fileID: 2878094723787706557}
   - component: {fileID: -4907096247998656412}
+  - component: {fileID: 6271177900592527753}
   m_Layer: 3
   m_Name: Giant01 - Golem Texture02 Recolor04
   m_TagString: Enemy
@@ -1080,6 +1081,7 @@ MonoBehaviour:
     m_Bits: 128
   em: {fileID: 0}
   animator: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!114 &-4907096247998656412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,6 +1097,24 @@ MonoBehaviour:
   healthCanvas: {fileID: 2846089191749340817, guid: 37959441175c203459fac768a03c02a0, type: 3}
   statsWindow: {fileID: 0}
   hpText: {fileID: 2433026204815015092, guid: 37959441175c203459fac768a03c02a0, type: 3}
+--- !u!114 &6271177900592527753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3894686801780384096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &4049510662891533049
 GameObject:
   m_ObjectHideFlags: 0

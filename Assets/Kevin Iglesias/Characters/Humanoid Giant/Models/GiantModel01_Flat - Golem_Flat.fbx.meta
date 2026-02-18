@@ -1,5 +1,13 @@
 fileFormatVersion: 2
 guid: b3681b15fa0a0ad4e936d65ce5c2a0fb
+AssetOrigin:
+  serializedVersion: 1
+  productId: 278960
+  packageName: Giant Monster Model - Golem
+  packageVersion: 1.0
+  assetPath: Assets/Kevin Iglesias/Characters/Humanoid Giant/Models/GiantModel01_Flat
+    - Golem_Flat.fbx
+  uploadId: 684561
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -30,7 +38,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -816,11 +824,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 278960
-  packageName: Giant Monster Model - Golem
-  packageVersion: 1.0
-  assetPath: Assets/Kevin Iglesias/Characters/Humanoid Giant/Models/GiantModel01_Flat
-    - Golem_Flat.fbx
-  uploadId: 684561
