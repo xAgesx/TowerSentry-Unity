@@ -16,13 +16,15 @@ public class GameManager : MonoBehaviour {
 
     public EntitiesManager em;
     public GameObject statsUI;
+    private float radius;
+    public float[] extremes ;
 
     void Awake() {
         instance = this;
     }
     void Start() {
         StartLevel(currentLevelIndex);
-        
+
         em = FindAnyObjectByType<EntitiesManager>().GetComponent<EntitiesManager>();
         statsUI = GameObject.Find("EntityStats");
         statsUI.SetActive(false);
@@ -52,7 +54,17 @@ public class GameManager : MonoBehaviour {
             yield return new WaitForSeconds(group.delayBeforeStarting);
 
             for (int i = 0; i < group.count; i++) {
-                var enemy = Instantiate(group.enemyPrefab, spawnPoint.position, Quaternion.identity);
+                float angle = Random.Range(0f, System.MathF.PI * 2);
+                radius = Random.Range(extremes[0], extremes[1]);
+                
+                float x = Mathf.Cos(angle) * radius;
+                float z = Mathf.Sin(angle) * radius;
+
+                Vector3 spawnPosition = new Vector3(x, 0, z) ;
+                
+
+
+                var enemy = Instantiate(group.enemyPrefab, spawnPosition, Quaternion.identity);
                 em.enemies.Add(enemy);
                 enemiesSpawnedSoFar++;
 
@@ -77,5 +89,10 @@ public class GameManager : MonoBehaviour {
     public void OnUpgradeSelected() {
         currentLevelIndex++;
         StartLevel(currentLevelIndex);
+    }
+    void OnDrawGizmos() {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(Vector3.zero,extremes[0]);
+        Gizmos.DrawWireSphere(Vector3.zero,extremes[1]);
     }
 }

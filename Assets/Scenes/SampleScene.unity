@@ -6457,6 +6457,9 @@ MonoBehaviour:
   upgradeUI: {fileID: 1555468260083180635}
   em: {fileID: 0}
   statsUI: {fileID: 5819072084242426360}
+  extremes:
+  - 25
+  - 30
 --- !u!224 &8853001177905311547
 RectTransform:
   m_ObjectHideFlags: 0
