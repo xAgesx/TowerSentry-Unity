@@ -23,10 +23,11 @@ public class TroopSpawn : MonoBehaviour {
         if (previewObj == null) return;
         if(selectedTroopIndex == -1) return;
 
-        if (Mouse.current.leftButton.wasPressedThisFrame) {
+        if (Mouse.current.leftButton.wasPressedThisFrame && entitiesManager.TroopLimit > entitiesManager.currentTroops) {
             Debug.Log("Spawned Troop");
             if (getDistance(previewObj.transform.position, Vector3.zero) <= range) {
                 Instantiate(entitiesManager.troopPrefabs[selectedTroopIndex], previewObj.transform.position, quaternion.identity);
+                entitiesManager.currentTroops ++;
             }
         } else if (Mouse.current.rightButton.wasPressedThisFrame) {
             isPreview = false;
