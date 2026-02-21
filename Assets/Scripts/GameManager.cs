@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour {
         upgradeUI.SetActive(false);
         Time.timeScale = 1f;
 
+        em.currentTroops =0;
         enemiesSpawnedSoFar = 0;
         enemiesKilledSoFar = 0;
         totalEnemiesToSpawn = CalculateTotalEnemies(allLevels[index]);

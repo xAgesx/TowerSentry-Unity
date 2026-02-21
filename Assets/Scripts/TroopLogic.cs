@@ -115,6 +115,7 @@ public class TroopLogic : EntityLogic {
 
         if (HP <= 0f)
         {
+            em.currentTroops --;
             Destroy(gameObject);
         }
 
