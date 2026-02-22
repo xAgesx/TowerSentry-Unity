@@ -6661,6 +6661,8 @@ MonoBehaviour:
   extremes:
   - 25
   - 30
+  Gold: 120
+  Mana: 120
 --- !u!224 &8853001177905311547
 RectTransform:
   m_ObjectHideFlags: 0
