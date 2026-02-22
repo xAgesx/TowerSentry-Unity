@@ -11,6 +11,8 @@ public class TroopLogic : EntityLogic {
     [Header("References")]
     public EntitiesManager em;
     private float attackTimer;
+    private bool isDead = false;
+    public Animator anim;
 
     void Start() {
         HP = stats.maxHP;
@@ -27,6 +29,15 @@ public class TroopLogic : EntityLogic {
         } catch (Exception e) {
             Debug.Log("Error with EntitiesManager : " + e.Message);
         }
+        try
+        {
+            anim = GetComponent<Animator>();
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error with Animator : " + e.Message);
+        }
+
     }
 
     void Update() {
@@ -35,6 +46,8 @@ public class TroopLogic : EntityLogic {
         if (target == null)
         {
             agent.isStopped = true;
+            if (anim != null)
+                anim.SetBool("Run", false);
             Debug.Log("Idle");
         }
         else {
@@ -45,8 +58,6 @@ public class TroopLogic : EntityLogic {
         if(target != null)DrawTargetLine();
     }
     void Move(Vector3 pos) {
-
-        
         
         float distance = Vector3.Distance(transform.position, target.position);
 
@@ -54,6 +65,8 @@ public class TroopLogic : EntityLogic {
         {
             agent.isStopped = false;
             agent.SetDestination(target.position);
+            if (anim != null)
+                anim.SetBool("Run", true);
         }
         else
         {
@@ -98,6 +111,8 @@ public class TroopLogic : EntityLogic {
             if (enemy != null)
             {
                 enemy.TakeDamage(stats.damage);
+                if (anim != null)
+                    anim.SetTrigger("Attack");
                 Debug.Log("Unit is hitting");
             }
                 
@@ -109,15 +124,26 @@ public class TroopLogic : EntityLogic {
 
 
     public void TakeDamage(float damage) {
-
+        if (isDead) return;
         HP -= damage;
         Debug.Log("Unit HP: " + HP);
 
         if (HP <= 0f)
         {
-            em.currentTroops --;
-            Destroy(gameObject);
+            Die();
+            
         }
+
+    }
+
+    void Die()
+    {
+        isDead = true;
+        Debug.Log(gameObject.name + " died");
+        em.currentTroops--;
+        if (anim != null)
+            anim.SetBool("Dead", true);
+        Destroy(gameObject, 2f);
 
     }
 
