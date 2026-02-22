@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour {
     public GameObject statsUI;
     private float radius;
     public float[] extremes ;
+    public int Gold;
+    public int Mana;
 
     void Awake() {
         instance = this;
@@ -82,6 +84,7 @@ public class GameManager : MonoBehaviour {
     }
 
     IEnumerator EndLevel() {
+        Gold += allLevels[currentLevelIndex].goldReward;
         yield return new WaitForSeconds(2);
         Time.timeScale = 0f;
         upgradeUI.SetActive(true);

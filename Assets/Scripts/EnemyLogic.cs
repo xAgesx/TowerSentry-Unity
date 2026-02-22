@@ -144,6 +144,6 @@ public class EnemyLogic : EntityLogic {
         gameManager.EnemyDied();
         em.enemies.Remove(gameObject);
         Destroy(gameObject,2f);
-
+        GameManager.instance.Mana += stats.manaDrop;
     }
 }
