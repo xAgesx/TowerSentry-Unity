@@ -145,6 +145,6 @@ public class EnemyLogic : EntityLogic {
         em.enemies.Remove(gameObject);
         this.enabled = false;
         Destroy(gameObject,2f);
-
+        GameManager.instance.Mana += stats.manaDrop;
     }
 }

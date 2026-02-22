@@ -13,5 +13,6 @@ public class Entity : ScriptableObject
     public float attackRange;
     public GameObject prefab;
     public int cost;
+    public int manaDrop;
     public Sprite img;
 }

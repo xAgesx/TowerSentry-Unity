@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNumber: 2
   enemyGroups:
-  - enemyPrefab: {fileID: 4580954531043875452, guid: 37959441175c203459fac768a03c02a0, type: 3}
+  - enemyPrefab: {fileID: 3894686801780384096, guid: 0fedb01d68968c44f9d8a681e156a496, type: 3}
     count: 5
     delayBetweenSpawns: 2
     delayBeforeStarting: 1

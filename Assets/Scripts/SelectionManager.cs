@@ -30,7 +30,7 @@ public class SelectionManager : MonoBehaviour {
 
             currentHover = unitUnderMouse;
 
-            // Show new hover UI
+            //Show new hover UI
             if (currentHover != null) {
                 currentHover.SetOverlayVisible(true);
                 currentHover.SetStatsVisible(true);
@@ -51,7 +51,7 @@ public class SelectionManager : MonoBehaviour {
                 selectedUnit.SetOutline(true); 
                 selectedUnit.SetStatsVisible(true);
             } else {
-                // Clicked empty ground: hide everything
+                //hide everything
                 if (selectedUnit != null) {
                     selectedUnit.SetOutline(false);
                     selectedUnit.SetStatsVisible(false);

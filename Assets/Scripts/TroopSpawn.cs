@@ -22,12 +22,23 @@ public class TroopSpawn : MonoBehaviour {
     void Update() {
         if (previewObj == null) return;
         if(selectedTroopIndex == -1) return;
-
-        if (Mouse.current.leftButton.wasPressedThisFrame && entitiesManager.TroopLimit > entitiesManager.currentTroops) {
-            Debug.Log("Spawned Troop");
+        int cost = entitiesManager.troopPrefabs[selectedTroopIndex].GetComponent<TroopLogic>().stats.cost;
+        //Spawn troop on click (while selected)
+        if (Mouse.current.leftButton.wasPressedThisFrame) {
+            //Check for Troop limit && Cost
+            if(entitiesManager.TroopLimit <= entitiesManager.currentTroops) {
+                Debug.Log("Troop Limit Reached");
+                return;
+            }else if (GameManager.instance.Mana < cost) {
+                Debug.Log("insufficient Mana");
+                return;
+            }
+            
+            //Spawn
             if (getDistance(previewObj.transform.position, Vector3.zero) <= range) {
                 Instantiate(entitiesManager.troopPrefabs[selectedTroopIndex], previewObj.transform.position, quaternion.identity);
                 entitiesManager.currentTroops ++;
+                GameManager.instance.Mana -= cost;
             }
         } else if (Mouse.current.rightButton.wasPressedThisFrame) {
             isPreview = false;
