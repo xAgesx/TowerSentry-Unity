@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: -4907096247998656412}
   - component: {fileID: 6271177900592527753}
   m_Layer: 3
-  m_Name: Giant01 - Golem Texture02 Recolor04
+  m_Name: Golem
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

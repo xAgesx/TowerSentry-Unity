@@ -15,9 +15,10 @@ MonoBehaviour:
   type: Knight
   maxHP: 100
   movementSpeed: 1
-  damage: 20
+  damage: 50
   attackRate: 1
   attackRange: 2
   prefab: {fileID: 2779093461424976142, guid: 1a7adf99e1abf9745afd180a7a2a16e7, type: 3}
   cost: 50
+  manaDrop: 0
   img: {fileID: 21300000, guid: 0e89ff475b7f7784c83206dfe5d7a702, type: 3}

@@ -270,6 +270,7 @@ MonoBehaviour:
   em: {fileID: 0}
   animator: {fileID: 0}
   gameManager: {fileID: 0}
+  isDead: 0
 --- !u!114 &-4815176565721411014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,7 +503,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 40%
+  m_text: 0%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 0}

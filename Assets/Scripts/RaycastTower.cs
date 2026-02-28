@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class RaycastTower : MonoBehaviour
-{
+public class RaycastTower : MonoBehaviour {
     [Header("Attack")]
     public float range = 5f;
     public float damage = 10f;
@@ -23,8 +22,7 @@ public class RaycastTower : MonoBehaviour
     public float currentHP;
     public Vector3 offset;
 
-    void Awake()
-    {
+    void Awake() {
         detectionLayers = LayerMask.GetMask("Enemy");
 
         if (shootEffect == null)
@@ -32,12 +30,10 @@ public class RaycastTower : MonoBehaviour
         currentHP = maxHP;
     }
 
-    void Update()
-    {
+    void Update() {
         attackTimer -= Time.deltaTime;
 
-        if (attackTimer <= 0f)
-        {
+        if (attackTimer <= 0f) {
             TryAttack();
             attackTimer = 1f / attacksPerSecond;
         }
@@ -45,8 +41,7 @@ public class RaycastTower : MonoBehaviour
 
     // Tower Attack
 
-    void TryAttack()
-    {
+    void TryAttack() {
         Collider[] hits = Physics.OverlapSphere(
             transform.position,
             range,
@@ -57,7 +52,7 @@ public class RaycastTower : MonoBehaviour
             return;
 
         EnemyLogic enemy = hits[0].GetComponent<EnemyLogic>();
-        if (enemy == null)
+        if (enemy == null || enemy.isDead)
             return;
 
         enemy.TakeDamage(damage);
@@ -67,14 +62,12 @@ public class RaycastTower : MonoBehaviour
 
     // Shooting lazer
 
-    void ShootLaser(Transform target)
-    {
+    void ShootLaser(Transform target) {
         StopAllCoroutines();
         StartCoroutine(LaserRoutine(target));
     }
 
-    IEnumerator LaserRoutine(Transform target)
-    {
+    IEnumerator LaserRoutine(Transform target) {
         laser.enabled = true;
 
         laser.SetPosition(0, transform.position + offset);
@@ -87,19 +80,16 @@ public class RaycastTower : MonoBehaviour
 
     // Tower Taking dmg + dies
 
-    public void TakeDamage(float damage)
-    {
+    public void TakeDamage(float damage) {
         currentHP -= damage;
         Debug.Log("Tower HP: " + currentHP);
 
-        if (currentHP <= 0f)
-        {
+        if (currentHP <= 0f) {
             Die();
         }
     }
 
-    void Die()
-    {
+    void Die() {
         Debug.Log("Tower destroyed");
         Destroy(gameObject);
     }
@@ -144,8 +134,7 @@ public class RaycastTower : MonoBehaviour
     }*/
 
     // Draw the range of the tower
-    void OnDrawGizmos()
-    {
+    void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }

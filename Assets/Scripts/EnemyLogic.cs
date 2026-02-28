@@ -16,7 +16,7 @@ public class EnemyLogic : EntityLogic {
 
     public Animator animator;
     public GameManager gameManager;
-    private bool isDead = false;
+    public bool isDead = false;
     void Awake() {
         HP = stats.maxHP;
         em = FindAnyObjectByType<EntitiesManager>();
@@ -45,7 +45,6 @@ public class EnemyLogic : EntityLogic {
         MoveAndAttack();
     }
 
-    // ---------------- TARGET SELECTION ----------------
 
     void SelectTarget() {
         Collider[] unitsInRange = Physics.OverlapSphere(
@@ -76,7 +75,7 @@ public class EnemyLogic : EntityLogic {
         return closest;
     }
 
-    // ---------------- MOVEMENT + ATTACK ----------------
+
 
     void MoveAndAttack() {
         if (currentTarget == null)
@@ -94,7 +93,7 @@ public class EnemyLogic : EntityLogic {
         }
     }
 
-    
+
     void AttackCurrentTarget() {
         attackTimer -= Time.deltaTime;
 
@@ -115,7 +114,7 @@ public class EnemyLogic : EntityLogic {
         attackTimer = 1f / stats.attackRate;
     }
 
-    // ---------------- DEBUG ----------------
+
 
     void OnDrawGizmosSelected() {
         Gizmos.color = Color.yellow;
@@ -125,7 +124,6 @@ public class EnemyLogic : EntityLogic {
         Gizmos.DrawWireSphere(transform.position, stats.attackRange);
     }
 
-    // -------------- Health Management -----------------
 
     public void TakeDamage(float damage) {
         if (isDead) return;
@@ -144,7 +142,8 @@ public class EnemyLogic : EntityLogic {
         gameManager.EnemyDied();
         em.enemies.Remove(gameObject);
         this.enabled = false;
-        Destroy(gameObject,2f);
+        GetComponent<NavMeshAgent>().enabled = false;
+        Destroy(gameObject, 2f);
         GameManager.instance.Mana += stats.manaDrop;
     }
 }
