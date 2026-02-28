@@ -15,13 +15,6 @@ public class ShopManager : MonoBehaviour {
     }
 
     void ApplyEffect(Upgrades data) {
-        switch (data.type) {
-            case Upgrades.UpgradeType.UnlockUnit:
-                
-                break;
-            case Upgrades.UpgradeType.TowerStat:
-                
-                break;
-        }
+        data.ApplyEffect();
     }
 }

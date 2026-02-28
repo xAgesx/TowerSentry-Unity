@@ -180,7 +180,6 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -489,6 +488,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 48ceb479000bfeb4c98982493d258b99, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2869450923775721374}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 48ceb479000bfeb4c98982493d258b99, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5977554159255579341}
   m_SourcePrefab: {fileID: 100100000, guid: 48ceb479000bfeb4c98982493d258b99, type: 3}
 --- !u!1 &2779093461424976142 stripped
 GameObject:
@@ -552,9 +554,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd7a7e54e4b67746a898e8e6d1ad67a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthCanvas: {fileID: 0}
+  healthCanvas: {fileID: 2846089191749340817, guid: 37959441175c203459fac768a03c02a0, type: 3}
   statsWindow: {fileID: 0}
-  hpText: {fileID: 0}
+  hpText: {fileID: 2433026204815015092, guid: 37959441175c203459fac768a03c02a0, type: 3}
 --- !u!114 &4058159882549394793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,6 +606,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5977554159255579341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779093461424976142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &3304096676987857844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 48ceb479000bfeb4c98982493d258b99, type: 3}
