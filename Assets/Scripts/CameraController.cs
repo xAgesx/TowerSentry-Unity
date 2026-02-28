@@ -22,6 +22,8 @@ public class CameraController : MonoBehaviour {
     private InputAction lookAction;
 
     public float currentZoom = 0.5f;
+    public float currentPitch = 0;
+    public float yaw = 0;
 
     void Awake() {
 
@@ -34,6 +36,7 @@ public class CameraController : MonoBehaviour {
     void Update() {
         HandleMovement();
         HandleZoom();
+        HandleRotation();
     }
 
     void HandleMovement() {
@@ -46,19 +49,19 @@ public class CameraController : MonoBehaviour {
             direction.z -= mouseDelta.y * dragSpeed;
         }
 
-        transform.Translate(moveSpeed * Time.deltaTime * direction, Space.World);
+        transform.Translate(moveSpeed * Time.deltaTime * direction);
     }
 
     void HandleZoom() {
         float scrollValue = zoomAction.ReadValue<Vector2>().y;
 
-        if (Mathf.Abs(scrollValue) > 0.01f ) {
+        if (Mathf.Abs(scrollValue) > 0.01f) {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             if (Physics.Raycast(ray, out RaycastHit hit)) {
                 Vector3 direction = hit.point - transform.position;
                 float zoomAmount = (scrollValue > 0) ? zoomSpeed : -zoomSpeed;
 
-                if(zoomAmount < 0 && transform.rotation.eulerAngles.x >= maxAngle) return;
+                if (zoomAmount < 0 && transform.rotation.eulerAngles.x >= maxAngle) return;
 
                 Vector3 newPosition = transform.position + direction * zoomAmount;
                 newPosition.y = Mathf.Clamp(newPosition.y, minHeight, maxHeight);
@@ -68,6 +71,18 @@ public class CameraController : MonoBehaviour {
                 float t = (transform.position.y - minHeight) / (maxHeight - minHeight);
                 transform.rotation = Quaternion.Euler(Mathf.Lerp(20, 60, t), transform.eulerAngles.y, 0);
             }
+        }
+    }
+    private void HandleRotation() {
+        if (Mouse.current.rightButton.isPressed) {
+            Vector2 mouseDelta = lookAction.ReadValue<Vector2>();
+
+            yaw += mouseDelta.x * .2f;
+            currentPitch -= mouseDelta.y * 0.2f ;
+            currentPitch = Mathf.Clamp(currentPitch, -90,90);
+
+            Debug.Log($"<color=red>{currentPitch}  {mouseDelta.x}</color>");
+            transform.rotation = Quaternion.Euler(currentPitch, yaw, 0);
         }
     }
 }

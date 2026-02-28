@@ -1594,6 +1594,8 @@ MonoBehaviour:
   maxAngle: 60
   playerInput: {fileID: 330585549}
   currentZoom: 0.1
+  currentPitch: 0
+  yaw: 0
 --- !u!114 &330585549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2816,7 +2818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &786942003
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6234,7 +6236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1631511131475737181
 MonoBehaviour:
   m_ObjectHideFlags: 0
